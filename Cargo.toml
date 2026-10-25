@@ -1,0 +1,20 @@
+[package]
+name = "oumu"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.88"
+description = "VoxCPM2 text-to-speech on CUDA GPUs: own kernels, CUDA graphs, several takes per batch, one dependency"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/hayatree/oumu"
+keywords = ["tts", "text-to-speech", "voxcpm", "cuda", "speech-synthesis"]
+categories = ["multimedia::audio", "science"]
+publish = false
+
+# One external crate on purpose: safetensors/JSON/bf16/WAV/tokenizer/.pth handling is done in-tree to keep the audit surface small.
+[dependencies]
+cudarc = { version = "=0.19.10", default-features = false, features = ["std", "cuda-version-from-build-system", "driver", "cublas", "nvrtc", "dynamic-loading"] }
+
+[profile.release]
+debug = false
+lto = "thin"

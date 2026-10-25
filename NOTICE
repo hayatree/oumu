@@ -1,0 +1,17 @@
+oumu
+Copyright (c) 2026 hayatree
+
+oumu is an independent Rust and CUDA implementation of VoxCPM2. It was written by following the reference
+implementation step by step, so parts of it are translations of that code into another language, modified and
+restructured (batched decoding, CUDA graphs, own kernels). Those parts derive from:
+
+- VoxCPM (https://github.com/OpenBMB/VoxCPM)
+  Copyright 2025-2026 OpenBMB, Apache License 2.0
+  Model architecture and decoding loop, prompt assembly, splitting of multi-character CJK tokens, AudioVAE.
+  scripts/hf_case.py also reproduces a few lines of UnifiedCFM.forward to replay the diffusion noise.
+
+- Hugging Face Transformers (https://github.com/huggingface/transformers)
+  Copyright 2020 The HuggingFace Inc. team, Apache License 2.0
+  Tokenizer behaviour (BPE with byte fallback, Metaspace pre-tokenisation, added tokens).
+
+The Apache License 2.0 is in LICENSE-APACHE. No model weights are included.
